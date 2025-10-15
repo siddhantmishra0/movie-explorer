@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import Link from "next/link";
 
 type User = {
   id: string;
@@ -40,7 +41,7 @@ export function Header() {
   return (
     <header className="border-b">
       <div className="max-w-5xl mx-auto px-4 py-3 flex items-center justify-between">
-        <a href="/" className="font-semibold">Movie Explorer</a>
+        <Link href="/" className="font-semibold">Movie Explorer</Link>
         <nav className="flex items-center gap-3 text-sm">
           {!loading && user && <span className="text-gray-700">Hello, {user.name}</span>}
           {user && <a href="/favorites" className="underline">My Favorites</a>}
