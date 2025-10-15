@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function RegisterPage() {
@@ -27,8 +27,9 @@ export default function RegisterPage() {
 			}
             try { localStorage.setItem("last_credentials", JSON.stringify({ email, password })); } catch {}
 			router.push("/");
-		} catch (err: any) {
-			setError(err?.message || "Registration failed");
+		} catch (err: unknown) {
+			const message = err instanceof Error ? err.message : "Registration failed";
+			setError(message);
 		} finally {
 			setLoading(false);
 		}

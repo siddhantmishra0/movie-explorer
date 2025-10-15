@@ -22,7 +22,7 @@ export function signAuthToken(payload: AuthTokenPayload, expiresIn: string = "7d
 export function verifyAuthToken(token: string): AuthTokenPayload | null {
 	try {
 		return jwt.verify(token, JWT_SECRET) as AuthTokenPayload;
-	} catch (_err) {
+	} catch {
 		return null;
 	}
 }

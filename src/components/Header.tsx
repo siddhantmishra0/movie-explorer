@@ -44,7 +44,7 @@ export function Header() {
         <Link href="/" className="font-semibold">Movie Explorer</Link>
         <nav className="flex items-center gap-3 text-sm">
           {!loading && user && <span className="text-gray-700">Hello, {user.name}</span>}
-          {user && <a href="/favorites" className="underline">My Favorites</a>}
+          {user && <Link href="/favorites" className="underline">My Favorites</Link>}
           <ThemeToggle />
           {user && (
             <form action="/api/auth/logout" method="POST">

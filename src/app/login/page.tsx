@@ -40,8 +40,9 @@ export default function LoginPage() {
             try { localStorage.setItem("last_credentials", JSON.stringify({ email, password })); } catch {}
 			const next = search.get("next") || "/";
 			router.push(next);
-		} catch (err: any) {
-			setError(err?.message || "Login failed");
+		} catch (err: unknown) {
+			const message = err instanceof Error ? err.message : "Login failed";
+			setError(message);
 		} finally {
 			setLoading(false);
 		}

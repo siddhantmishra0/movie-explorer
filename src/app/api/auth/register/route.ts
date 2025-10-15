@@ -29,8 +29,9 @@ export async function POST(req: Request) {
 			maxAge: 60 * 60 * 24 * 7,
 		});
 		return res;
-	} catch (err: any) {
-		return NextResponse.json({ error: err?.message || "Registration failed" }, { status: 400 });
+    } catch (err: unknown) {
+        const message = err instanceof Error ? err.message : "Registration failed";
+        return NextResponse.json({ error: message }, { status: 400 });
 	}
 }
 

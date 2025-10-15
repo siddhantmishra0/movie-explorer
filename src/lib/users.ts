@@ -33,7 +33,9 @@ export async function createUser(email: string, password: string, name: string):
 export async function verifyUser(email: string, password: string): Promise<PublicUser | null> {
 	const found = Array.from(users.values()).find((u) => u.email.toLowerCase() === email.toLowerCase());
 	if (!found) return null;
-	const ok = await bcrypt.compare(password, found.passwordHash);
+    // Reference passwordHash to satisfy unused var lint in some strict settings
+    void found.passwordHash;
+    const ok = await bcrypt.compare(password, found.passwordHash);
 	return ok ? toPublic(found) : null;
 }
 
