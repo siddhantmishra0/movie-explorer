@@ -1,8 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
-export default function LoginPage() {
+
+function LoginForm() {
 	const router = useRouter();
 	const search = useSearchParams();
     const [email, setEmail] = useState("");
@@ -77,6 +78,14 @@ export default function LoginPage() {
 				</p>
 			</form>
 		</div>
+	);
+}
+
+export default function LoginPage() {
+	return (
+		<Suspense fallback={<div className="min-h-[70vh] flex items-center justify-center p-6">Loading...</div>}>
+			<LoginForm />
+		</Suspense>
 	);
 }
 
