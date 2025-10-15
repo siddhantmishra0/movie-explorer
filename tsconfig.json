@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    // Target modern JS runtime features supported by Next
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -18,6 +19,7 @@
         "name": "next"
       }
     ],
+    // Enable absolute imports like `@/components/Button`
     "paths": {
       "@/*": ["./src/*"]
     }

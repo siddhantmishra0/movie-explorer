@@ -2,6 +2,7 @@ import { dirname } from "path";
 import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
 
+// Bridge from legacy config to Flat config used by Next.js tooling
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
